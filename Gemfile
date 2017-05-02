@@ -32,6 +32,7 @@ group :development, :test do
   gem "i18n-tasks"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.5.0"
+  gem "rails-controller-testing"
 end
 
 group :test do
