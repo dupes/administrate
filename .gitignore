@@ -6,7 +6,7 @@
 /.env
 /.foreman
 /coverage/*
-/db/*.sqlite3
+*.sqlite3
 /log/*
 /spec/example_app/log/*
 /spec/example_app/public/system
@@ -15,3 +15,7 @@
 /tmp/*
 /spec/example_app/tmp/*
 /.idea
+spec/example_app/config/database.yml
+config/secrets.yml
+spec/example_app/config/initializers/secret_token.rb
+
