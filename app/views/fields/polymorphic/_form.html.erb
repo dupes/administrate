@@ -22,4 +22,10 @@ so this partial renders a message to that effect.
   <%= f.label field.name %>
 </div>
 
-<%= t("administrate.fields.polymorphic.not_supported") %>
+<% if field.data %>
+    <%= link_to(
+            field.display_associated_resource,
+            [namespace, field.data]
+        ) %>
+<% end %>
+
