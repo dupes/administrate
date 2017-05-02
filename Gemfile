@@ -2,16 +2,20 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem "administrate-field-image",
-  git: "https://github.com/thoughtbot/administrate-field-image.git",
-  branch: "jq-rails-5"
+ruby "2.3.1"
+
+gem "rails", "~> 5.0.0"
+
+#gem "administrate-field-image",
+#  git: "https://github.com/thoughtbot/administrate-field-image.git",
+#  branch: "jq-rails-5"
 gem "bourbon", "~> 4.2"
 gem "delayed_job_active_record"
 gem "faker"
 gem "high_voltage"
 gem "markdown-rails"
-gem "pg"
 gem "redcarpet"
+gem "sqlite3"
 gem "unicorn"
 
 group :development do
