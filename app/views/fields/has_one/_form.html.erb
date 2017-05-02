@@ -21,4 +21,9 @@ so this partial renders a message to that effect.
   <%= f.label field.attribute %>
 </div>
 
-<%= t("administrate.fields.has_one.not_supported") %>
+<% if field.data %>
+    <%= link_to(
+            field.display_associated_resource,
+            [namespace, field.data],
+        ) %>
+<% end %>
