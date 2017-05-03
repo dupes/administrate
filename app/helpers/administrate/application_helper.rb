@@ -5,6 +5,14 @@ module Administrate
       render locals: locals, partial: field.to_partial_path
     end
 
+    def index_action_exists?(namespace, resource)
+      begin
+        Rails.application.routes.recognize_path(Rails.application.routes.url_helpers.send("#{namespace}_#{resource}_path".underscore))
+      rescue
+        false
+      end
+    end
+
     def display_resource_name(resource_name)
       resource_name.
         to_s.
