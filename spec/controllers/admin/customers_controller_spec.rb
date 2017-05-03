@@ -84,7 +84,7 @@ describe Admin::CustomersController, type: :controller do
         end
 
         page = locals[:page]
-        expect(page).to be_instance_of(Administrate::Page::Form)
+        expect(page).to be_instance_of(Administrate::Page::FormNew)
         expect(page.resource).to be_a_new(Customer)
       end
 
@@ -140,7 +140,7 @@ describe Admin::CustomersController, type: :controller do
         end
 
         page = locals[:page]
-        expect(page).to be_instance_of(Administrate::Page::Form)
+        expect(page).to be_instance_of(Administrate::Page::FormEdit)
         expect(page.resource).to eq(customer)
       end
     end
