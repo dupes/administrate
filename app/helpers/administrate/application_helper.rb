@@ -5,7 +5,7 @@ module Administrate
       render locals: locals, partial: field.to_partial_path
     end
 
-    def index_action_exists?(namespace, resource)
+    def action_exists?(namespace, resource)
       begin
         Rails.application.routes.recognize_path(polymorphic_path([namespace, resource]))
         true
