@@ -42,7 +42,7 @@ describe Admin::CustomersController, type: :controller do
     it "passes a new form page object to the view" do
       locals = capture_view_locals { get :new }
 
-      expect(locals[:page]).to be_instance_of(Administrate::Page::Form)
+      expect(locals[:page]).to be_instance_of(Administrate::Page::FormNew)
     end
   end
 
@@ -55,7 +55,7 @@ describe Admin::CustomersController, type: :controller do
       end
 
       page = locals[:page]
-      expect(page).to be_instance_of(Administrate::Page::Form)
+      expect(page).to be_instance_of(Administrate::Page::FormEdit)
       expect(page.resource).to eq(customer)
     end
   end
