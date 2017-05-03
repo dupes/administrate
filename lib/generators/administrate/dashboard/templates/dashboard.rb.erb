@@ -39,12 +39,20 @@ class <%= class_name %>Dashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
+  FORM_NEW_ATTRIBUTES = [
 <%=
   form_attributes.map do |attr|
     "    :#{attr},"
   end.join("\n")
 %>
+  ].freeze
+
+  FORM_EDIT_ATTRIBUTES = [
+      <%=
+        form_attributes.map do |attr|
+          "    :#{attr},"
+        end.join("\n")
+      %>
   ].freeze
 
   # Overwrite this method to customize how <%= file_name.pluralize.humanize.downcase %> are displayed

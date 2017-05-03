@@ -24,13 +24,13 @@ module Administrate
 
     def new
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource_class.new),
+        page: Administrate::Page::FormNew.new(dashboard, resource_class.new),
       }
     end
 
     def edit
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, requested_resource),
+        page: Administrate::Page::FormEdit.new(dashboard, requested_resource),
       }
     end
 
