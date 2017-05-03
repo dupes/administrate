@@ -390,7 +390,7 @@ describe Administrate::Generators::DashboardGenerator, :generator do
 
           run_generator ["foo"]
           load file("app/dashboards/foo_dashboard.rb")
-          attrs = FooDashboard::FORM_ATTRIBUTES
+          attrs = FooDashboard::FORM_EDIT_ATTRIBUTES
 
           expect(attrs).to match_array([:name])
         ensure
