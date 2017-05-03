@@ -19,6 +19,8 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
 
 <header class="header">
   <h1 class="header__heading"><%= content_for(:title) %></h1>
+
+  <% if action_exists?(namespace, page.resource) %>
   <div class="header__actions">
     <%= link_to(
       "Show #{page.page_title}",
@@ -26,6 +28,7 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
       class: "button",
     ) %>
   </div>
+  <% end %>
 </header>
 
 <%= render "form", page: page %>
