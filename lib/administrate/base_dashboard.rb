@@ -31,12 +31,20 @@ module Administrate
       end
     end
 
-    def form_attributes
-      self.class::FORM_ATTRIBUTES
+    def form_new_attributes
+      self.class::FORM_NEW_ATTRIBUTES
+    end
+
+    def form_edit_attributes
+      self.class::FORM_EDIT_ATTRIBUTES
     end
 
     def permitted_attributes
-      form_attributes.map do |attr|
+      form_new_attributes.map do |attr|
+        attribute_types[attr].permitted_attribute(attr)
+      end
+
+      form_edit_attributes.map do |attr|
         attribute_types[attr].permitted_attribute(attr)
       end.uniq
     end

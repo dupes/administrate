@@ -54,26 +54,29 @@ describe Administrate::Generators::DashboardGenerator, :generator do
           remove_constants :Foo, :FooDashboard
         end
       end
+      
+      skip ".inet active record field type not valid for sqlite" do
+        it "defaults to a string column that is not searchable" do
+          begin
+            ActiveRecord::Schema.define do
+              create_table(:foos) { |t| t.inet :ip_address }
+            end
 
-      it "defaults to a string column that is not searchable" do
-        begin
-          ActiveRecord::Schema.define do
-            create_table(:foos) { |t| t.inet :ip_address }
+            class Foo < ActiveRecord::Base
+              reset_column_information
+            end
+
+            run_generator ["foo"]
+            load file("app/dashboards/foo_dashboard.rb")
+            attrs = FooDashboard::ATTRIBUTE_TYPES
+
+            expect(attrs[:ip_address]).
+                to eq(Administrate::Field::String.with_options(searchable: false))
+          ensure
+            remove_constants :Foo, :FooDashboard
           end
-
-          class Foo < ActiveRecord::Base
-            reset_column_information
-          end
-
-          run_generator ["foo"]
-          load file("app/dashboards/foo_dashboard.rb")
-          attrs = FooDashboard::ATTRIBUTE_TYPES
-
-          expect(attrs[:ip_address]).
-            to eq(Administrate::Field::String.with_options(searchable: false))
-        ensure
-          remove_constants :Foo, :FooDashboard
         end
+
       end
 
       it "includes has_many relationships" do
@@ -387,7 +390,7 @@ describe Administrate::Generators::DashboardGenerator, :generator do
 
           run_generator ["foo"]
           load file("app/dashboards/foo_dashboard.rb")
-          attrs = FooDashboard::FORM_ATTRIBUTES
+          attrs = FooDashboard::FORM_EDIT_ATTRIBUTES
 
           expect(attrs).to match_array([:name])
         ensure

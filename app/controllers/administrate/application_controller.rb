@@ -24,13 +24,13 @@ module Administrate
 
     def new
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource_class.new),
+        page: Administrate::Page::FormNew.new(dashboard, resource_class.new),
       }
     end
 
     def edit
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, requested_resource),
+        page: Administrate::Page::FormEdit.new(dashboard, requested_resource),
       }
     end
 
@@ -44,7 +44,7 @@ module Administrate
         )
       else
         render :new, locals: {
-          page: Administrate::Page::Form.new(dashboard, resource),
+          page: Administrate::Page::FormNew.new(dashboard, resource),
         }
       end
     end
@@ -57,7 +57,7 @@ module Administrate
         )
       else
         render :edit, locals: {
-          page: Administrate::Page::Form.new(dashboard, requested_resource),
+          page: Administrate::Page::FormEdit.new(dashboard, requested_resource),
         }
       end
     end
