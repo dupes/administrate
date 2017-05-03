@@ -7,7 +7,8 @@ module Administrate
 
     def index_action_exists?(namespace, resource)
       begin
-        Rails.application.routes.recognize_path(Rails.application.routes.url_helpers.send("#{namespace}_#{resource}_path".underscore))
+        Rails.application.routes.recognize_path(polymorphic_path([namespace, resource]))
+        true
       rescue
         false
       end
