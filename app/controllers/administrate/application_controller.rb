@@ -39,7 +39,7 @@ module Administrate
 
       if resource.save
         redirect_to(
-          [namespace, resource],
+          edit_polymorphic_path([namespace, resource]),
           notice: translate_with_resource("create.success"),
         )
       else

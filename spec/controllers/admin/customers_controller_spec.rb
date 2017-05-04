@@ -71,7 +71,7 @@ describe Admin::CustomersController, type: :controller do
       it "redirects to the created customer" do
         post :create, customer: attributes_for(:customer)
 
-        expect(response).to redirect_to([:admin, Customer.last])
+        expect(response).to redirect_to(edit_admin_customer_path(Customer.last))
       end
     end
 

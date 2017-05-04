@@ -13,7 +13,6 @@ describe "order form" do
     fill_in "Address zip", with: "Example"
     click_on "Create Order"
 
-    expect(page).to have_link(customer.name)
     expect(page).to have_flash(
       t("administrate.controller.create.success", resource: "Order")
     )
