@@ -85,7 +85,7 @@ describe "order form" do
       select_from_datepicker(Time.new(2015, 01, 02, 03, 04, 05))
       click_on "Update Order"
 
-      expect(page).to have_content("Fri, Jan 2, 2015 at 03:04:05 AM")
+      expect(page).to have_content("Order was successfully updated")
     end
 
     it "populates and persists the existing value", :js do

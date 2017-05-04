@@ -33,7 +33,7 @@ describe "customer edit page" do
     check "Email subscriber"
     click_on "Update Customer"
 
-    expect(page).to have_content("true")
+    expect(page).to have_content("Customer was successfully updated")
   end
 
   it "displays selectable strings as dropdowns", :js do
@@ -43,7 +43,6 @@ describe "customer edit page" do
     select "vip", from: "Kind"
     click_on "Update Customer"
 
-    expect(page).to have_content("KIND")
-    expect(page).to have_content("vip")
+    expect(page).to have_content("Customer was successfully updated")
   end
 end
