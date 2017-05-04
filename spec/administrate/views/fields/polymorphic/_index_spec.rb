@@ -29,7 +29,7 @@ describe "fields/polymorphic/_index", type: :view do
         locals: { field: polymorphic, namespace: "admin" },
       )
 
-      expected = "<a href=\"#{product_path}\">#{product.name}</a>"
+      expected = "<a href=\"#{product_path}/edit\">#{product.name}</a>"
       expect(rendered.strip).to eq(expected)
     end
   end
