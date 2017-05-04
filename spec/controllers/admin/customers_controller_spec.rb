@@ -111,13 +111,13 @@ describe Admin::CustomersController, type: :controller do
         expect(customer.name).to eq new_name
       end
 
-      it "redirects to the customer" do
+      it "redirects to the customer edit" do
         customer = create(:customer)
         valid_attributes = attributes_for(:customer)
 
         put :update, id: customer.to_param, customer: valid_attributes
 
-        expect(response).to redirect_to([:admin, customer])
+        expect(response).to redirect_to(edit_admin_customer_path(customer))
       end
     end
 
