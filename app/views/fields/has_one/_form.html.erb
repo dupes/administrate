@@ -24,6 +24,6 @@ so this partial renders a message to that effect.
 <% if field.data %>
     <%= link_to(
             field.display_associated_resource,
-            [namespace, field.data],
+            polymorphic_path([namespace, field.data], action: :edit)
         ) %>
 <% end %>
