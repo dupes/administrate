@@ -64,7 +64,13 @@ module Administrate
 
     def destroy
       requested_resource.destroy
-      flash[:notice] = translate_with_resource("destroy.success")
+
+      if requested_resource.errors.empty?
+        flash[:notice] = translate_with_resource("destroy.success")
+      else
+        flash[:error] = requested_resource.errors.full_messages[0]
+      end
+
       redirect_to action: :index
     end
 
